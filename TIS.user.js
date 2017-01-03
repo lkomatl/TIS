@@ -14,7 +14,7 @@
    
 var addr = location.pathname; // алиас относительного пути
 var vol = 1; //громкость по умолчанию
-var link1 = "https://psv4.vk.me/c5039/u14643698/audios/56b1299f49d3.mp3"; //звук оповещения по умолчанию 
+var link1 = "https://p.nnm.su/assets/frog.mp3"; //звук оповещения по умолчанию 
 var poltaim = 5; // время до оповещения по умолчанию
 var t=document.getElementById('b-work').innerHTML; //достаём и коверкаем таймер
 var th = t.substring(0, t.length - 6);
