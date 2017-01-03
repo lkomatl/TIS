@@ -22,16 +22,9 @@ var tm = t.substring(3, t.length - 3);
 var ts = t.substring(6);
     if (ts < poltaim ){ts = 0;}
     else {ts = ts - poltaim;}
-//создаём звук    
-    var   audio = new Audio();
-    audio.volume= localStorage["pernatskTIS.vol"] / 10;// настриваем громкость 
-    audio.src = localStorage["pernatskTIS.link1"];
-    
-    //функция для кнопки сохранить
-function applySetings(){
-localStorage["pernatskTIS.vol"] = input.value;
 
-}
+    
+
     
     //таймер
         th = th * 3600000;
@@ -63,7 +56,10 @@ var to = th + tm  + ts;
 		}
 	}
     
-
+//создаём звук    
+    var   audio = new Audio();
+    audio.volume= localStorage["pernatskTIS.vol"] / 10;// настриваем громкость 
+    audio.src = localStorage["pernatskTIS.link1"];
 // настройки
 	if (addr == '/nest/bird/settings') {
 		// форма с настройками юзерскрипта
@@ -114,7 +110,7 @@ var to = th + tm  + ts;
             console.log(link1);
             console.log(poltaim);
            
-			applySetings();
+			
             location.reload();
 		});
 //подстановка значений в инпут
