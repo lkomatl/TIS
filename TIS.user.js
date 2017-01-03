@@ -14,22 +14,24 @@
    
 var addr = location.pathname; // алиас относительного пути
 var vol = 1; //громкость по умолчанию
-var link1 = "https://psv4.vk.me/c5039/u14643698/audios/677ba6fb2eaa.mp3"; //звук оповещения по умолчанию 
+var link1 = "https://psv4.vk.me/c5039/u14643698/audios/56b1299f49d3.mp3"; //звук оповещения по умолчанию 
+var poltaim = 5; // время до оповещения по умолчанию
 var t=document.getElementById('b-work').innerHTML; //достаём и коверкаем таймер
 var th = t.substring(0, t.length - 6);
 var tm = t.substring(3, t.length - 3);
 var ts = t.substring(6);
-    var poltaim = 5;
     if (ts < poltaim ){ts = 0;}
     else {ts = ts - poltaim;}
 //создаём звук    
-var   audio = new Audio();
+    var   audio = new Audio();
     audio.volume= localStorage["pernatskTIS.vol"] / 10;// настриваем громкость 
-audio.src = localStorage["pernatskTIS.link1"];
+    audio.src = localStorage["pernatskTIS.link1"];
     
     //функция для кнопки сохранить
 function applySetings(){
-localStorage["pernatskTIS.vol"] = input.value;}
+localStorage["pernatskTIS.vol"] = input.value;
+
+}
     
     //таймер
         th = th * 3600000;
@@ -47,6 +49,9 @@ var to = th + tm  + ts;
 		if (typeof localStorage["pernatskTIS.link1"] == "undefined") {
 			localStorage["pernatskTIS.link1"] = link1;
 		} 
+		if (typeof localStorage["pernatskTIS.poltaim"] == "undefined") {
+			localStorage["pernatskTIS.poltaim"] = poltaim;
+		}
 	}
 	// Проверяет, можно ли пользоваться local storage
 	function supportsLocalStorage() {
@@ -71,6 +76,12 @@ var to = th + tm  + ts;
 		'			<br>'+
 		'			<input id="vol"  name="vol" type="range" min="1" max="10" step="1" > '+
 		'			<span id="result"> </span> '+
+        '		</div>'+
+		'		<div class="set-action">'+
+		'			<b>Врмя оповещения</b>:'+
+		'			<input  type="text" id="poltaim" name="poltaim" class="flea-searching-input">'+
+        '		сек. '+   
+		'		</div>'+
 		'		</div>'+
 		'		<div class="set-action">'+
 		'			<b>Звук оповещения</b>:'+
@@ -93,18 +104,24 @@ var to = th + tm  + ts;
 			if (!supportsLocalStorage()) { return false; }
 			vol = $('#vol').val();
             link1 = $('#link1').val();
+            poltaim = $('#poltaim').val();
             
 			console.log('Сохраняем настройки тем оформления.');
 			localStorage["pernatskTIS.vol"] = vol;
             localStorage["pernatskTIS.link1"] = link1;
+            localStorage["pernatskTIS.poltaim"] = poltaim;
+            console.log(vol);
             console.log(link1);
+            console.log(poltaim);
+           
 			applySetings();
             location.reload();
 		});
-//подстановка адреса зука в инпут
+//подстановка значений в инпут
         
         document.getElementById('link1').setAttribute('value', localStorage["pernatskTIS.link1"]);
         document.getElementById('vol').setAttribute('value', localStorage["pernatskTIS.vol"]);
+        document.getElementById('poltaim').setAttribute('value', localStorage["pernatskTIS.poltaim"]);
        
 //подстановка значения звука првее бегунка	
   var input = document.getElementById('vol');
