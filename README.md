@@ -1,2 +1,2 @@
-# TIS
-Userscript оповещения
+# PernatskUserscript 
+скриптики для пернатска 
