@@ -24,61 +24,61 @@ Notification.requestPermission(function(permission){});// Вроде как пр
 		}
 	}
 
-// Загружаем настройки
-if (supportsLocalStorage()) {
+    // Загружаем настройки
+    if (supportsLocalStorage()) {
         //громкость
-		if (typeof localStorage["pernatskTIS.vol"] == "undefined") {
-			localStorage["pernatskTIS.vol"] = volume;
-		}
+        if (typeof localStorage["pernatskTIS.vol"] == "undefined") {
+            localStorage["pernatskTIS.vol"] = volume;
+        }
         //пользовательское время(до пилика)
-		if (typeof localStorage["pernatskTIS.poltaim"] == "undefined") {
-			localStorage["pernatskTIS.poltaim"] = poltaim;
-		}
+        if (typeof localStorage["pernatskTIS.poltaim"] == "undefined") {
+            localStorage["pernatskTIS.poltaim"] = poltaim;
+        }
         //ссылка на звук(основная)
-		if (typeof localStorage["pernatskTIS.link1"] == "undefined") {
-			localStorage["pernatskTIS.link1"] = link;
-		}
-            //сылка на звук(дирижабль)
-		if (typeof localStorage["pernatskTIS.link2"] == "undefined") {
-			localStorage["pernatskTIS.link2"] = link;
-		}
-                //сылка на звук(Замбычь)
-		if (typeof localStorage["pernatskTIS.link3"] == "undefined") {
-			localStorage["pernatskTIS.link3"] = link;
-		}
+        if (typeof localStorage["pernatskTIS.link1"] == "undefined") {
+            localStorage["pernatskTIS.link1"] = link;
+        }
+        //сылка на звук(дирижабль)
+        if (typeof localStorage["pernatskTIS.link2"] == "undefined") {
+            localStorage["pernatskTIS.link2"] = link;
+        }
+        //сылка на звук(Замбычь)
+        if (typeof localStorage["pernatskTIS.link3"] == "undefined") {
+            localStorage["pernatskTIS.link3"] = link;
+        }
         //галачка для основного звука
-		if (typeof localStorage["pernatskTIS.zvukosnov"] == "undefined") {
-			localStorage["pernatskTIS.zvukosnov"] = input;
-		}
-    //галачка для основного оповещения
-		if (typeof localStorage["pernatskTIS.mailOsnov"] == "undefined") {
-			localStorage["pernatskTIS.mailOsnov"] = input;
-		}
+        if (typeof localStorage["pernatskTIS.zvukosnov"] == "undefined") {
+            localStorage["pernatskTIS.zvukosnov"] = input;
+        }
+        //галачка для основного оповещения
+        if (typeof localStorage["pernatskTIS.mailOsnov"] == "undefined") {
+            localStorage["pernatskTIS.mailOsnov"] = input;
+        }
         //галачка для дирижабля (звук)
-		if (typeof localStorage["pernatskTIS.zvukDoki"] == "undefined") {
-			localStorage["pernatskTIS.zvukDoki"] = input;
-		}
-    //галачка для дирижабля (оповещение)
-		if (typeof localStorage["pernatskTIS.mailDoki"] == "undefined") {
-			localStorage["pernatskTIS.mailDoki"] = input;
-		}
-            //галачка для Зомбыча (звук)
-		if (typeof localStorage["pernatskTIS.zvukZomb"] == "undefined") {
-			localStorage["pernatskTIS.zvukZomb"] = input;
-		}
-    //галачка для Зомбыча (оповещение)
-		if (typeof localStorage["pernatskTIS.mailZomb"] == "undefined") {
-			localStorage["pernatskTIS.mailZomb"] = input;
-		}
-	}
+        if (typeof localStorage["pernatskTIS.zvukDoki"] == "undefined") {
+            localStorage["pernatskTIS.zvukDoki"] = input;
+        }
+        //галачка для дирижабля (оповещение)
+        if (typeof localStorage["pernatskTIS.mailDoki"] == "undefined") {
+            localStorage["pernatskTIS.mailDoki"] = input;
+        }
+        //галачка для Зомбыча (звук)
+        if (typeof localStorage["pernatskTIS.zvukZomb"] == "undefined") {
+            localStorage["pernatskTIS.zvukZomb"] = input;
+        }
+        //галачка для Зомбыча (оповещение)
+        if (typeof localStorage["pernatskTIS.mailZomb"] == "undefined") {
+            localStorage["pernatskTIS.mailZomb"] = input;
+        }
+    }
 
 
-//Функция для воспроизведения сообщения 
-     function playAudio(URLsound) {
-    var   audio = new Audio();//создаём звук (основной)
-    audio.volume= volume / 10;// настриваем громкость
-    audio.src = URLsound;
-     audio.play();}
+    //Функция для воспроизведения сообщения 
+    function playAudio(URLsound) {
+        var   audio = new Audio();//создаём звук (основной)
+        audio.volume= volume / 10;// настриваем громкость
+        audio.src = URLsound;
+        audio.play();}
 
 
 //Функция для вывода оповещениея
@@ -90,8 +90,8 @@ var  mailNotification = new Notification("TIS оповещение", {
 } );
 
     //Функция при клике на уведомление перекидывает на вкладку с ператском
-     function clickFunc() { window.focus();}
-  mailNotification.onclick = clickFunc;
+    function clickFunc() { window.focus();}
+    mailNotification.onclick = clickFunc;
 }
 
     //функция для расчета времени полученого из таймера
@@ -137,15 +137,14 @@ else if (inputMail == "true" ){
 }
     
     //функция для запуска основного оповещения
-Start(localStorage["pernatskTIS.zvukosnov"], localStorage["pernatskTIS.mailOsnov"], localStorage["pernatskTIS.link1"],'b-work', 
-        "Пернатый вот-вот осободится", "https://pernatsk.ru/themes/compressed/img/fav/apple-touch-icon-57x57.png");  
+    Start(localStorage["pernatskTIS.zvukosnov"], localStorage["pernatskTIS.mailOsnov"], localStorage["pernatskTIS.link1"],'b-work', 
+          "Пернатый вот-вот осободится", "https://pernatsk.ru/themes/compressed/img/fav/apple-touch-icon-57x57.png");  
     //функция для запуска опвещения для доков
-Start(localStorage["pernatskTIS.zvukDoki"], localStorage["pernatskTIS.mailDoki"], localStorage["pernatskTIS.link2"], 'mini-content-timer-airship-fly', 
-        "Дирижабль готов к запуску", "https://pernatsk.ru/assets/25532/compressed/img/posters/airship-4.png");  
-//Функция для запуска опвещения у Зомбыча
-Start(localStorage["pernatskTIS.zvukZomb"], localStorage["pernatskTIS.mailZomb"], localStorage["pernatskTIS.link3"], 'sidebar_beaver_attack', 
-        "Можно навалять Зомбычу", "https://pernatsk.ru/assets/25532/compressed/img/themes/winter/avatar-999.png");  
-
+    Start(localStorage["pernatskTIS.zvukDoki"], localStorage["pernatskTIS.mailDoki"], localStorage["pernatskTIS.link2"], 'mini-content-timer-airship-fly', 
+          "Дирижабль готов к запуску", "https://pernatsk.ru/assets/25532/compressed/img/posters/airship-4.png");  
+    //Функция для запуска опвещения у Зомбыча
+    Start(localStorage["pernatskTIS.zvukZomb"], localStorage["pernatskTIS.mailZomb"], localStorage["pernatskTIS.link3"], 'sidebar_beaver_attack', 
+          "Можно навалять Зомбычу", "https://pernatsk.ru/assets/25532/compressed/img/themes/winter/avatar-999.png");  
 
     
 //настройки скрипта
