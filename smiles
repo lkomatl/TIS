@@ -1,0 +1,27 @@
+// ==UserScript==
+// @name         smiles
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://pernatsk.ru/square/pwitter
+// @grant        none
+// ==/UserScript==
+
+(function() {
+var elem = document.getElementById('smiles_list');
+    console.log(elem);
+
+
+    var d = document.createElement('div');
+    d.className="set-bb set-bb-sm";
+d.id = 'flowers' ;
+
+    document.getElementById('smiles_list').appendChild(d);
+
+var b = document.createElement('div');
+
+    b.className="g18_icons i-july-flowers";
+        document.getElementById('flowers').appendChild(b);
+    elem.appendChild(document.createElement('br'));
+})();
