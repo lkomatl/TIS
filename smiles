@@ -7,6 +7,7 @@
 
 (function() {
 var i = 0;
+var elem = document.getElementById('smiles_list');
 var icon = ["g18_icons i-snowdrop",
             "g18_icons i-snowball",
             "g18_icons i-july-flowers",
@@ -66,4 +67,5 @@ var lig= icon.length ;
         i++;
     }
     elem.appendChild(document.createElement('br'));
+
 })();
