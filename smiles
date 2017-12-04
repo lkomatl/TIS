@@ -1,27 +1,69 @@
 // ==UserScript==
 // @name         smiles
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
+// @version      0.2
+// @author       kombat
 // @match        https://pernatsk.ru/square/pwitter
-// @grant        none
 // ==/UserScript==
 
 (function() {
-var elem = document.getElementById('smiles_list');
-    console.log(elem);
+var i = 0;
+var icon = ["g18_icons i-snowdrop",
+            "g18_icons i-snowball",
+            "g18_icons i-july-flowers",
+            "g18_icons i-coopsalt",
+            "g18_icons i-sledge",
+            "g18_icons i-sled",
+            "g18_icons i-strand",
+            "g18_icons i-stencil",
+            "g18_icons i-susp",
+            "g18_icons i-snowdrift",
+            "g18_icons i-stash",
+            "g18_icons i-snowbox",
+            "g18_icons i-sertificat",
+            "g18_icons i-scaner",
+            "g18_icons i-stove",
+            "g18_icons i-sugarcookie",
+            "g18_icons i-snow-stick",
+            "g18_icons i-saltstatue",
+            "g18_icons i-snowmedalion",
+            "g18_icons i-paper",
+            "g18_icons i-snowbird"];
 
 
-    var d = document.createElement('div');
-    d.className="set-bb set-bb-sm";
-d.id = 'flowers' ;
+    var smiles = ["nowdrop",
+                  "nowball",
+                  "flowers",
+                  "altcave",
+                  "ledgecave",
+                  "led",
+                  "trand",
+                  "tencil",
+                  "usp",
+                  "nowdrift",
+                  "tash",
+                  'nowbox',
+                  "ertificat",
+                  "caner",
+                  "tove",
+                  "ugarcookie",
+                  "now-stick",
+                  "altstatue",
+                  "nowmedalion",
+                  "paper",
+                  "nowbird"];
+var lig= icon.length ;
 
-    document.getElementById('smiles_list').appendChild(d);
+    while (i < lig) {
+        var d = document.createElement('div');
+        d.className="set-bb set-bb-sm";
+        d.id = smiles[i] ;
+        d.style='margin:2px';
+        document.getElementById('smiles_list').appendChild(d);
 
-var b = document.createElement('div');
-
-    b.className="g18_icons i-july-flowers";
-        document.getElementById('flowers').appendChild(b);
+        var b = document.createElement('div');
+        b.className=icon[i];
+        document.getElementById(smiles[i]).appendChild(b);
+        i++;
+    }
     elem.appendChild(document.createElement('br'));
 })();
