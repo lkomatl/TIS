@@ -1,0 +1,41 @@
+// ==UserScript==
+// @name         snegokosParser
+// @version      0.1
+// @author       kombat
+// @match       https://pernatsk.ru/square/snow/clean/game
+// ==/UserScript==
+
+(function() {
+var lig = 1;
+var i =1;
+    function func()//функция для подстановки скобок и запятых
+    {if(i<8){$('.b-content-w').append(',');}
+     else if(lig==8){$('.b-content-w').append(']]');}
+     else{$('.b-content-w').append('], <br>[');}}
+
+var tic =		'[[';//подставляется в самом начале
+$('.b-content-w').append(tic);
+   var a = document.getElementsByClassName('snowclean-cell l1 p1')[0];
+    /*var lol = document.getElementsByClassName('snowclean-cell l1 p1')[0].getAttribute('class');
+    alert(lol);*/ //кусок для получния класас
+for(lig = 1; lig < 9; lig++){
+    for (i = 1; i < 9; i++){
+        var v = document.getElementsByClassName('snowclean-cell l' + lig +' p' + i +'')[0].getElementsByClassName('g45-snow i45-snowdrift')[0];
+        var vv = document.getElementsByClassName('snowclean-cell l' + lig +' p' + i +'')[0].getElementsByClassName('g45-snow i45-snowdrift-big')[0];
+                var D = document.getElementsByClassName('snowclean-cell l' + lig +' p' + i +'')[0].getElementsByClassName('g45-snow i45-ice')[0];
+        //console.log(v);
+        if (v!== undefined){//добовляем полученый результат вниз
+            var s ='1';
+            $('.b-content-w').append(s);
+            func();}
+        else if(vv!== undefined){var sB ='2';
+                                 $('.b-content-w').append(sB);
+                                 func();}
+        else if(D!== undefined){var Di ='"D"';
+                                 $('.b-content-w').append(Di);
+                                 func();}
+                else if(D=== undefined){var X ='"X"';
+                                 $('.b-content-w').append(X);
+                                 func();}
+}}
+})();
