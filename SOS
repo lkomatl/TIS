@@ -1,0 +1,29 @@
+// ==UserScript==
+// @name         SOS
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://pernatsk.ru/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    //создайм звук
+    var   audio = new Audio();
+    audio.src =  'https://wav-library.net/sounds/0-0-1-2277-20';
+
+    var ps = $('.count').text();//полуаем прочность солиевиков
+
+    function func() {
+        var ps1 = $('.count').text();//получаем для сравнения прочность солиевика с каждым прогоном
+        if(ps !== ps1)
+                  {            audio.play();
+                   console.log('метнули');
+                   ps = $('.count').text();}
+
+        //console.log('перезапускается нормально');
+        setTimeout(func, 1500);
+}
+func();
+})();
